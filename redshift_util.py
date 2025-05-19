@@ -31,8 +31,6 @@ def download_file(save_path, download_url):
 
 def animal_hospital_addr_to_code():
     df = pd.read_csv('data/csv/animal_hospital.csv')
-    print(df.info())
-    print(df['addr'])
     df['location_code'] = df['addr'].astype(str).apply(lambda x: addr_to_code.get(x.split()[0], 'not found'))
     df.to_csv('data/csv/animal_hospital.csv', index=False)
     print('location_code added to animal_hospital.csv')
